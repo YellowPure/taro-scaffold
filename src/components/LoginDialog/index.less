@@ -1,0 +1,83 @@
+.login-dialog {
+  .layout-body {
+    padding: 32px;
+  }
+  .login-dialog-bar {
+    align-items: center;
+    position: relative;
+  }
+  .login-title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 500;
+  }
+
+  .login-close {
+    position: absolute;
+    right: 0;
+    top: 4px;
+  }
+  .login-dialog-back {
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }
+
+  .login-dialog-content {
+    // padding: 32px;
+  }
+
+  .login-dialog-input {
+    border: none;
+    height: 88px;
+    margin-bottom: 48px;
+    color: rgba(0, 0, 0, .85);
+    background-color: #f5f5f5;
+    border-radius: 44px;
+    padding-left: 32px;
+    padding-right: 32px;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, .25);
+    }
+  }
+  .login-dialog-input-box {
+    margin-bottom: 48px;
+    position: relative;
+    .login-dialog-input {
+      padding-right: 200px;
+    }
+    .login-dialog-resend {
+      position: absolute;
+      right: 32px;
+      top: 22px;
+      color: #F87C27;
+    }
+  }
+
+  .login-dialog-button {
+    width: 368px;
+    height: 88px;
+    line-height: 88px;
+    background-color: #F87C27;
+    border-radius: 44px;
+    color: #fff;
+    font-size: 32px;
+    &.grey-button {
+      color: #F87C27;
+      background-color: #f5f5f5;
+    }
+  }
+
+  .login-dialog-tbox {
+    margin: 48px auto;
+    text-align: center;
+  }
+  .login-dialog-txt {
+    color: rgba(0, 0, 0, .65);
+    font-size: 32px;
+    line-height: 44px;
+  }
+  .login-dialog-normal {
+  }
+}

@@ -1,0 +1,38 @@
+.ywk-tab-header {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  height: 88px;
+  &.with-right {
+    justify-content: space-between;
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    position: relative;
+    font-size: 28px;
+    color: rgba(0, 0, 0, .65);
+    line-height: 40px;
+    &.active {
+      color: rgba(0, 0, 0, .85);
+      font-weight: 800;
+      &::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 16rpx);
+        bottom: -24px;
+        width: 32rpx;
+        background: #F87C27;
+        height: 4rpx;
+        border-radius: 2rpx;
+      }
+    }
+    &:not(:last-child) {
+      margin-right: 48px;
+    }
+  }
+}
