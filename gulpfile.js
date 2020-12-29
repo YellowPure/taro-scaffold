@@ -108,7 +108,7 @@ function minifyJS() {
 function minifyCSS() {
   return gulp
     .src('dist/**/*.wxss')
-    .pipe(cssnano())
+    .pipe(cssnano({zindex: false}))
     .pipe(gulp.dest('./build'));
 }
 
