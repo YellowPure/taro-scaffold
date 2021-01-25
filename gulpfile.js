@@ -145,13 +145,24 @@ function carry() {
   return gulp.src('build/**/*').pipe(gulp.dest('dist'));
 }
 
+function wait() {
+  return new Promise((resolve) => {
+    console.log('waiting file refresh')
+    setTimeout(() => {
+      resolve()
+    }, 3000)
+  });
+}
+
+
 gulp.task(
   'build',
   gulp.series(
     cleanBuild,
     gulp.parallel(minifyJS, minifyCSS, minifyHTML, minifyImg, copyOther),
     cleanDist,
-    carry
+    carry,
+    wait
   )
 );
 
