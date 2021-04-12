@@ -35,6 +35,7 @@ yarn upload-cdn
 
 本模版提供`yarn compress`自定义命令，使用`gulp build`在预览之前打包，提供了开发中真机调试功能。
 
+> Tips: 此功能不稳定，经测试，需先build后 ==> 命令行编译 ==> 预览
 ## 开发功能增强
 
 * `kill.sh` 微信开发者工具偶尔会在后台hold server，`sh kill.sh` 杀掉端口
