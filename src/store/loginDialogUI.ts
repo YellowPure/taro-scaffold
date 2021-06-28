@@ -1,9 +1,9 @@
 /**
  * @module:  登录弹窗
- * @author Liang Huang 
- * @date 2020-09-14 17:47:08 
+ * @author Liang Huang
+ * @date 2020-09-14 17:47:08
  */
-import { observable } from "mobx";
+import { observable } from 'mobx';
 
 class LoginDialogUI {
   @observable phoneValue: string;

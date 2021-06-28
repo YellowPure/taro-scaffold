@@ -4,7 +4,7 @@
  * @date 2020-09-12 16:19:26
  */
 import Taro from '@tarojs/taro';
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from 'react';
 /**
  * hook中使用interval
  * @param callback {function}
@@ -24,7 +24,7 @@ export function useInterval(callback, delay) {
       savedCallback.current();
     }
     if (delay !== null) {
-      let id = setInterval(tick, delay);
+      const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
   }, [delay]);
@@ -46,11 +46,9 @@ export function useLocalStorage(key, initialValue) {
     }
   });
 
-  const setValue = (value) => {
+  const setValue = value => {
     try {
-      const valueToStore = value instanceof Function
-        ? value(storedValue)
-        : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
       Taro.setStorageSync(key, JSON.stringify(valueToStore));
     } catch (error) {

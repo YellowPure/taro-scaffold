@@ -1,5 +1,5 @@
-import path from 'path'
-import webpack from 'webpack';
+import path from 'path';
+import ESLintPlugin from 'eslint-webpack-plugin';
 
 const config = {
   projectName: 'taro-scaffold',
@@ -12,9 +12,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist`,
-  plugins: [
-    
-  ],
+  plugins: [],
   defineConstants: {},
   copy: {
     patterns: [],
@@ -25,9 +23,7 @@ const config = {
     postcss: {
       pxtransform: {
         enable: true,
-        config: {
-
-        }
+        config: {}
       },
       url: {
         enable: true,
@@ -41,18 +37,22 @@ const config = {
           namingPattern: 'module', // 转换模式，取值为 global/module
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
-      },
+      }
     },
     webpackChain(chain) {
       // chain.plugin('analyzer')
       //   .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, []);
-      chain.merge({
-        plugin: {
-          install: {
-            plugin: new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-          }
+      chain.plugin('eslint').use(ESLintPlugin, [
+        {
+          files: [path.resolve(__dirname, '../src')],
+          context: '../',
+          emitError: true,
+          emitWarning: true,
+          failOnError: true,
+          extensions: ['js', 'jsx', 'ts', 'tsx'],
+          overrideConfigFile: '.eslintrc.js'
         }
-      })
+      ]);
     }
   },
   h5: {
@@ -74,17 +74,17 @@ const config = {
     esnextModules: ['taro-ui']
   },
   alias: {
-    '@src': path.resolve(__dirname, '..', 'src'),
+    '@src': path.resolve(__dirname, '..', 'src')
   }
-}
+};
 
 module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   } else if (process.env.NODE_ENV === 'test') {
-    return merge({}, config, require('./test'))
+    return merge({}, config, require('./test'));
   } else if (process.env.NODE_ENV === 'stage') {
-    return merge({}, config, require('./stage'))
+    return merge({}, config, require('./stage'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};

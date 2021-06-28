@@ -5,35 +5,39 @@
  * @date 2020-09-15 17:04:16
  */
 import store from '@src/store';
-import React, { CSSProperties, ReactNode, useState } from 'react'
+import React, { CSSProperties, ReactNode } from 'react';
 import { View } from '@tarojs/components';
-import { observer } from 'mobx-react'
-import { useDidHide, useDidShow } from '@tarojs/taro'
+import { observer } from 'mobx-react';
 
-import { getSystemInfo } from '@src/utils/utils'
+import { getSystemInfo } from '@src/utils/utils';
 import LoginDialog from '../LoginDialog';
 
 interface IProps {
-  style?: CSSProperties,
-  className?: string,
-  children?: ReactNode
+  style?: CSSProperties;
+  className?: string;
+  children?: ReactNode;
 }
 
-let {
-  navBarHeight,
-  navBarExtendHeight,
-} = getSystemInfo();
+const { navBarHeight, navBarExtendHeight } = getSystemInfo();
 
 const Page = observer((props: IProps) => {
   const { style, className, children } = props;
   const { loginDialogUI } = store;
 
-  return <View
-    className={className}
-    style={{ height: '100vh', overflow: 'hidden', paddingTop: `${navBarHeight + navBarExtendHeight}px`, ...style }}
-  >{children}
-   {loginDialogUI.visible && <LoginDialog />}
-  </View>
-})
+  return (
+    <View
+      className={className}
+      style={{
+        height: '100vh',
+        overflow: 'hidden',
+        paddingTop: `${Number(navBarHeight) + Number(navBarExtendHeight)}px`,
+        ...style
+      }}
+    >
+      {children}
+      {loginDialogUI.visible && <LoginDialog />}
+    </View>
+  );
+});
 
 export default Page;

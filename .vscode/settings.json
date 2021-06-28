@@ -1,0 +1,13 @@
+{
+  "workbench.colorCustomizations": {},
+  "editor.codeActionsOnSave": {
+    // For Eslint
+    "source.fixAll.eslint": true,
+    // For Stylelint
+    "source.fixAll.stylelint": true
+  },
+  "editor.tabSize": 2,
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  }
+}

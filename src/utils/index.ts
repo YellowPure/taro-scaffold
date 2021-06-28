@@ -8,4 +8,4 @@ export default {
   hook,
   url,
   rule
-}
+};
