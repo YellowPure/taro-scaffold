@@ -9,8 +9,8 @@
     "css": "sass"
   },
   "scripts": {
-    "build-test:weapp": "taro build --type weapp --env test",
-    "build-stage:weapp": "taro build --type weapp --env stage",
+    "build-test:weapp": "cross-env API_ENV=test taro build --type weapp",
+    "build-stage:weapp": "cross-env API_ENV=stage taro build --type weapp",
     "build-prod:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
