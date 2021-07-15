@@ -1,9 +1,9 @@
 module.exports = {
   env: {
-    NODE_ENV: '"production"'
+    NODE_ENV: '"production"',
+    API_ENV: '"production"',
   },
-  defineConstants: {
-  },
+  defineConstants: {},
   mini: {},
   h5: {
     /**
@@ -14,5 +14,5 @@ module.exports = {
      *     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
      * }
      */
-  }
-}
+  },
+};

@@ -1,9 +1,9 @@
 module.exports = {
   env: {
-      NODE_ENV: '"test"'
+    NODE_ENV: '"production"',
+    API_ENV: '"test"',
   },
-  defineConstants: {
-  },
+  defineConstants: {},
   mini: {},
-  h5: {}
-}
+  h5: {},
+};

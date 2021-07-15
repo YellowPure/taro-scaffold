@@ -5,11 +5,11 @@ import { TEST_HOST, PROD_HOST, IHost, MOCK_HOST, hostKey, TOKEN, STAGE_HOST } fr
 const getHosts = () => {
   // console.log('process.env.NODE_ENV1', process.env.NODE_ENV);
   let host: any = TEST_HOST;
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.API_ENV === 'production') {
     host = PROD_HOST;
-  } else if (process.env.NODE_ENV === 'test') {
+  } else if (process.env.API_ENV === 'test') {
     host = TEST_HOST;
-  } else if (process.env.NODE_ENV === 'stage') {
+  } else if (process.env.API_ENV === 'stage') {
     host = STAGE_HOST;
   }
   return host;
@@ -36,13 +36,11 @@ const getHost = (host?: hostKey, isMock?: boolean): IHost => {
  */
 export const request = (options: Taro.request.Option<any>, host?: hostKey, isMock?: boolean) => {
   let url = '';
-  const _host = getHost(host, isMock);
+  let _host = getHost(host, isMock);
   let cookie = '';
   try {
     cookie = JSON.parse(Taro.getStorageSync(TOKEN));
-  } catch (error) {
-    console.log('request error:', error);
-  }
+  } catch (error) {}
 
   if (process.env.TARO_ENV === 'weapp') {
     url = `${_host}${options.url}`;
@@ -54,7 +52,7 @@ export const request = (options: Taro.request.Option<any>, host?: hostKey, isMoc
 
   options.header = options.header || {};
   if (cookie) {
-    options.header.cookie = `cwsso_token=${cookie}`;
+    options.header['cookie'] = `cwsso_token=${cookie}`;
   }
   const _options = { ...options, url };
   return Taro.request(_options).then(res => {
