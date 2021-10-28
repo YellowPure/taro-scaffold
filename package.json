@@ -1,7 +1,6 @@
 {
   "name": "taro-scaffold",
   "version": "1.0.0",
-  "private": true,
   "description": "a taro scaffold",
   "templateInfo": {
     "name": "mobx",

@@ -36,7 +36,7 @@ const getHost = (host?: hostKey, isMock?: boolean): IHost => {
  */
 export const request = (options: Taro.request.Option<any>, host?: hostKey, isMock?: boolean) => {
   let url = '';
-  let _host = getHost(host, isMock);
+  const _host = getHost(host, isMock);
   let cookie = '';
   try {
     cookie = JSON.parse(Taro.getStorageSync(TOKEN));
@@ -52,7 +52,7 @@ export const request = (options: Taro.request.Option<any>, host?: hostKey, isMoc
 
   options.header = options.header || {};
   if (cookie) {
-    options.header['cookie'] = `cwsso_token=${cookie}`;
+    options.header.cookie = `cwsso_token=${cookie}`;
   }
   const _options = { ...options, url };
   return Taro.request(_options).then(res => {
